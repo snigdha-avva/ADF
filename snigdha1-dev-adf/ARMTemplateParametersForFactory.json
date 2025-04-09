@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "snigdha1-dev-adf"
+		},
+		"linkedService1_password": {
+			"value": ""
+		},
+		"ls_SqlServer_adfsnigdhasql1_password": {
+			"value": ""
+		},
+		"ls_adfsnigdhasql1_adfsnigdhadb_password": {
+			"value": ""
+		},
+		"ls_blob_adfsnigdhadatalake_connectionString": {
+			"value": ""
+		},
+		"linkedService1_properties_typeProperties_server": {
+			"value": "adfsnigdhasql1.database.windows.net"
+		},
+		"linkedService1_properties_typeProperties_database": {
+			"value": "adfsnigdhadb "
+		},
+		"linkedService1_properties_typeProperties_userName": {
+			"value": "adfsqladmin"
+		},
+		"ls_SqlServer_adfsnigdhasql1_properties_typeProperties_server": {
+			"value": "adfsnigdhasql1.database.windows.net"
+		},
+		"ls_SqlServer_adfsnigdhasql1_properties_typeProperties_database": {
+			"value": "adfsnigdhadb"
+		},
+		"ls_SqlServer_adfsnigdhasql1_properties_typeProperties_userName": {
+			"value": "adfsqladmin"
+		},
+		"ls_adfsnigdhasql1_adfsnigdhadb_properties_typeProperties_server": {
+			"value": "adfsnigdhasql1.database.windows.net"
+		},
+		"ls_adfsnigdhasql1_adfsnigdhadb_properties_typeProperties_database": {
+			"value": "adfsnigdhadb"
+		},
+		"ls_adfsnigdhasql1_adfsnigdhadb_properties_typeProperties_userName": {
+			"value": "adfsqladmin"
+		}
+	}
+}
