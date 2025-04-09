@@ -1,0 +1,84 @@
+{
+	"name": "array",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set array",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "marks",
+					"value": [
+						60,
+						70,
+						80
+					]
+				}
+			},
+			{
+				"name": "Append array element",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Set array",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "marks",
+					"value": {
+						"value": "@variables('newArrayElem')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "output array",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append array element",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp",
+					"value": {
+						"value": "@variables('marks')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"marks": {
+				"type": "Array"
+			},
+			"temp": {
+				"type": "Array"
+			},
+			"newArrayElem": {
+				"type": "Integer",
+				"defaultValue": 100
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-03-18T19:19:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

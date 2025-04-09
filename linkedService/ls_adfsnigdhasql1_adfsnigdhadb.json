@@ -1,0 +1,17 @@
+{
+	"name": "ls_adfsnigdhasql1_adfsnigdhadb",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "adfsnigdhasql1.database.windows.net",
+			"database": "adfsnigdhadb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "adfsqladmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEUyM0YwQ0JGLUIxMEEtNDNCNi1CRDQ4LTYwRDY4NEE0MERBRV9iZmYwNGU2OS1jMjM1LTRlMGItODZhYi05OGVjN2ZlODM0MDEiDQp9"
+		}
+	}
+}

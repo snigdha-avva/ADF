@@ -1,0 +1,9 @@
+{
+	"name": "snigdha1-dev-adf",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d4e811a4-8b18-457d-84da-adb728326385",
+		"tenantId": "b52abf39-e623-4246-aa76-9ef090bee77a"
+	}
+}

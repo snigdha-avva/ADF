@@ -1,0 +1,125 @@
+{
+	"name": "migrating tables",
+	"properties": {
+		"description": "migrating tables from sql server to adls",
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('tableList')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ds_adfsnigdhadb",
+									"type": "DatasetReference",
+									"parameters": {
+										"SchemaName": {
+											"value": "@item().SourceSchema",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().SourceTableName",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_adfsnigdhadatalake_tabledestination",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().SinkFileName",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"tableList": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"SourceSchema": "asn",
+						"SourceTableName": "BONUS",
+						"SinkFileName": "RAW_BONUS"
+					},
+					{
+						"SourceSchema": "asn",
+						"SourceTableName": "DEPT",
+						"SinkFileName": "RAW_DEPT"
+					},
+					{
+						"SourceSchema": "asn",
+						"SourceTableName": "DUMMY",
+						"SinkFileName": "RAW_DUMMY"
+					},
+					{
+						"SourceSchema": "asn",
+						"SourceTableName": "SALGRADE",
+						"SinkFileName": "RAW_SALGRADE"
+					},
+					{
+						"SourceSchema": "dbo",
+						"SourceTableName": "EMP",
+						"SinkFileName": "RAW_EMP"
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-04-08T02:06:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
